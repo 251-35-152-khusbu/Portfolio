@@ -8,6 +8,8 @@ import {
   HiExternalLink,
 } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
+import profileData from "../data/profileData";
+import projects from "../data/projects";
 
 const Resume = () => {
   const handlePrint = () => {
@@ -15,12 +17,12 @@ const Resume = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4 sm:px-6 lg:px-8 text-gray-800 font-sans print:bg-white print:py-0 print:px-0">
+    <div className="min-h-screen bg-[#070b14] py-10 px-4 sm:px-6 lg:px-8 text-slate-800 font-sans print:bg-white print:py-0 print:px-0">
       {/* Top Action Bar (Hidden during print) */}
       <div className="max-w-4xl mx-auto mb-6 flex flex-wrap items-center justify-between gap-4 print:hidden">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 px-4 py-2.5 rounded-lg shadow-sm hover:bg-gray-50 hover:text-blue-600 transition"
+          className="inline-flex items-center gap-2 text-sm font-bold text-slate-200 bg-slate-900 border border-slate-700 hover:border-cyan-400 px-4 py-2.5 rounded-xl shadow-md hover:text-cyan-400 transition"
         >
           <HiArrowLeft className="text-base" /> Back to Portfolio
         </Link>
@@ -28,84 +30,84 @@ const Resume = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer"
+            className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-cyan-500 via-indigo-600 to-pink-600 hover:from-cyan-400 hover:to-pink-500 px-6 py-2.5 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transition cursor-pointer"
           >
             <HiPrinter className="text-base" /> Print / Save as PDF
           </button>
         </div>
       </div>
 
-      {/* Main Resume Sheet */}
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-gray-200/80 p-8 sm:p-12 print:shadow-none print:border-none print:p-0 print:rounded-none">
+      {/* Main Resume Sheet (White / ATS-friendly printable background) */}
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-gray-200 p-8 sm:p-12 print:shadow-none print:border-none print:p-0 print:rounded-none">
         
         {/* Header Section */}
-        <header className="border-b border-gray-200 pb-6 mb-6">
+        <header className="border-b-2 border-indigo-600 pb-6 mb-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-                Your Name
+              <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+                {profileData.name}
               </h1>
-              <p className="text-lg font-semibold text-blue-600 mt-1">
-                Fresher Web Developer | Frontend & React Developer
+              <p className="text-lg font-bold text-indigo-700 mt-1">
+                {profileData.role}
               </p>
-              <p className="text-sm text-gray-500 mt-1">
-                Passionate about building responsive, high-performance web applications with modern UI/UX.
+              <p className="text-sm font-medium text-gray-600 mt-1">
+                {profileData.subRole}
               </p>
             </div>
 
-            {/* Quick Badges / Availability */}
+            {/* Availability Badge */}
             <div className="flex flex-col items-start md:items-end gap-1 text-sm text-gray-600">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Open for Junior / Entry-Level Roles
+                Open for Software Engineer Roles
               </span>
-              <span className="text-xs text-gray-500 mt-1">Ready to join immediately</span>
+              <span className="text-xs text-gray-500 mt-1">Ready for Immediate Opportunities</span>
             </div>
           </div>
 
           {/* Contact Details Bar */}
-          <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs sm:text-sm text-gray-600 pt-4 border-t border-gray-100">
+          <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs sm:text-sm text-gray-700 pt-4 border-t border-gray-100">
             <a
-              href="mailto:youremail@example.com"
-              className="flex items-center gap-1.5 hover:text-blue-600 transition"
+              href={`mailto:${profileData.email}`}
+              className="flex items-center gap-1.5 hover:text-indigo-600 transition"
             >
-              <HiMail className="text-blue-600 text-base shrink-0" />
-              <span className="truncate">youremail@example.com</span>
+              <HiMail className="text-indigo-600 text-base shrink-0" />
+              <span className="truncate">{profileData.email}</span>
             </a>
             <a
-              href="tel:+8801700000000"
-              className="flex items-center gap-1.5 hover:text-blue-600 transition"
+              href={`tel:${profileData.phone}`}
+              className="flex items-center gap-1.5 hover:text-indigo-600 transition"
             >
-              <HiPhone className="text-blue-600 text-base shrink-0" />
-              <span>+880 1700-000000</span>
+              <HiPhone className="text-indigo-600 text-base shrink-0" />
+              <span>{profileData.phone}</span>
             </a>
             <div className="flex items-center gap-1.5">
-              <HiLocationMarker className="text-blue-600 text-base shrink-0" />
-              <span>Dhaka, Bangladesh</span>
+              <HiLocationMarker className="text-indigo-600 text-base shrink-0" />
+              <span>{profileData.location}</span>
             </div>
             <a
-              href="https://github.com/"
+              href={profileData.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 hover:text-blue-600 transition"
+              className="flex items-center gap-1.5 hover:text-indigo-600 transition"
             >
               <FaGithub className="text-gray-900 text-base shrink-0" />
               <span>GitHub</span>
             </a>
             <a
-              href="https://linkedin.com/"
+              href={profileData.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 hover:text-blue-600 transition"
+              className="flex items-center gap-1.5 hover:text-indigo-600 transition"
             >
-              <FaLinkedin className="text-blue-600 text-base shrink-0" />
+              <FaLinkedin className="text-indigo-600 text-base shrink-0" />
               <span>LinkedIn</span>
             </a>
             <a
               href="/"
-              className="flex items-center gap-1.5 hover:text-blue-600 transition"
+              className="flex items-center gap-1.5 hover:text-indigo-600 transition"
             >
-              <FaGlobe className="text-blue-600 text-base shrink-0" />
+              <FaGlobe className="text-indigo-600 text-base shrink-0" />
               <span>Portfolio</span>
             </a>
           </div>
@@ -113,250 +115,182 @@ const Resume = () => {
 
         {/* Section: Professional Summary */}
         <section className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-2.5 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-sm"></span>
+          <h2 className="text-base font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-2.5 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-sm"></span>
             Professional Summary
           </h2>
-          <p className="text-sm text-gray-700 leading-relaxed text-justify">
-            Passionate, detail-oriented, and highly motivated <strong>Fresher Web Developer</strong> with strong foundational proficiency in <strong>JavaScript (ES6+)</strong>, <strong>React.js</strong>, <strong>Tailwind CSS</strong>, and modern component-driven front-end architectures. Dedicated to writing clean, maintainable, and accessible code to craft responsive and intuitive web interfaces. An agile learner and enthusiastic team player seeking an entry-level Junior Web Developer / Frontend Developer position to contribute to impactful software products while expanding full-stack skills.
+          <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify">
+            Disciplined, proactive, and outcome-oriented <strong>Software Engineering undergraduate at Daffodil International University (DIU)</strong> with solid foundations in algorithmic thinking, data structures, and modern full-stack development. Experienced in building responsive, component-driven user interfaces with <strong>React 19</strong> and <strong>Tailwind CSS</strong>, combined with robust backend REST APIs using <strong>Node.js</strong> and <strong>Python</strong>. Strong background from Dinajpur Govt. College (GPA 5.00) and Dinajpur Govt. Girls' High School (GPA 5.00). Seeking software engineering opportunities to contribute to real-world impact while mastering modern cloud architectures.
           </p>
         </section>
 
         {/* Section: Technical Skills */}
         <section className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-sm"></span>
+          <h2 className="text-base font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-sm"></span>
             Technical Skills
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-            <div className="p-3 bg-gray-50/80 rounded-lg border border-gray-100">
-              <span className="font-semibold text-gray-900 block mb-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-sm">
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
+              <span className="font-bold text-gray-900 block mb-1">
                 Frontend Technologies:
               </span>
-              <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">
-                React.js, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Bootstrap, React Router, Context API, Responsive Design.
+              <p className="text-gray-700 leading-relaxed">
+                React.js 19, Next.js, JavaScript (ES6+), TypeScript, Tailwind CSS v4, HTML5, CSS3, Context API, Redux Toolkit, Responsive Web Design.
               </p>
             </div>
 
-            <div className="p-3 bg-gray-50/80 rounded-lg border border-gray-100">
-              <span className="font-semibold text-gray-900 block mb-1">
-                Backend &amp; Database (Foundational):
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
+              <span className="font-bold text-gray-900 block mb-1">
+                Backend &amp; APIs:
               </span>
-              <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">
-                Node.js (Basics), Express.js (Basics), RESTful APIs, JSON, MongoDB (CRUD), Firebase Authentication.
+              <p className="text-gray-700 leading-relaxed">
+                Node.js, Express.js, Python (FastAPI), RESTful API Architecture, JWT, WebSocket, GraphQL basics, Microservices.
               </p>
             </div>
 
-            <div className="p-3 bg-gray-50/80 rounded-lg border border-gray-100">
-              <span className="font-semibold text-gray-900 block mb-1">
-                Developer Tools &amp; Workflow:
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
+              <span className="font-bold text-gray-900 block mb-1">
+                Databases &amp; Storage:
               </span>
-              <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">
-                Git, GitHub, VS Code, Vite, npm, Postman, Chrome DevTools, Vercel, Netlify.
+              <p className="text-gray-700 leading-relaxed">
+                PostgreSQL, MongoDB (Mongoose), Redis, Firebase (Auth/Firestore), Supabase, Relational Modeling &amp; Query Optimization.
               </p>
             </div>
 
-            <div className="p-3 bg-gray-50/80 rounded-lg border border-gray-100">
-              <span className="font-semibold text-gray-900 block mb-1">
-                Core Competencies &amp; Practices:
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
+              <span className="font-bold text-gray-900 block mb-1">
+                DevOps, Tools &amp; Methodologies:
               </span>
-              <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">
-                Component-Driven Architecture, UI/UX Principles, Cross-Browser Compatibility, Performance Optimization, Problem Solving.
+              <p className="text-gray-700 leading-relaxed">
+                Git, GitHub, Docker, Postman, Linux CLI, Vite, Vercel, CI/CD pipelines, Agile/Scrum, SOLID Principles.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section: Featured Projects */}
-        <section className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3.5 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-sm"></span>
-            Featured Projects
-          </h2>
-
-          <div className="space-y-4">
-            {/* Project 1 */}
-            <div className="border-l-2 border-blue-600 pl-4 py-0.5">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
-                  Developer Portfolio &amp; Interactive Showcase
-                  <span className="text-xs font-normal text-blue-600 font-mono bg-blue-50 px-2 py-0.5 rounded">
-                    Personal Project
-                  </span>
-                </h3>
-                <div className="flex items-center gap-3 text-xs font-semibold text-blue-600">
-                  <a href="/" className="hover:underline flex items-center gap-1">
-                    Live View <HiExternalLink />
-                  </a>
-                  <span>•</span>
-                  <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
-                    GitHub Code <HiExternalLink />
-                  </a>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500 font-medium mt-0.5">
-                Tech Stack: React.js, Tailwind CSS, React Router, Vite
-              </p>
-              <ul className="mt-2 list-disc list-inside text-xs sm:text-sm text-gray-700 space-y-1">
-                <li>
-                  Designed and developed a fully responsive web application with active section scroll-spy and responsive mobile navigation.
-                </li>
-                <li>
-                  Built dynamic routing for individual project deep-dives and an ATS-friendly printable resume view with zero dependency bloat.
-                </li>
-                <li>
-                  Achieved high lighthouse performance scores through modern utility-first CSS and optimized asset bundling.
-                </li>
-              </ul>
-            </div>
-
-            {/* Project 2 */}
-            <div className="border-l-2 border-indigo-600 pl-4 py-0.5">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
-                  TechGear - Modern E-Commerce Platform
-                  <span className="text-xs font-normal text-indigo-600 font-mono bg-indigo-50 px-2 py-0.5 rounded">
-                    Frontend &amp; State Project
-                  </span>
-                </h3>
-                <div className="flex items-center gap-3 text-xs font-semibold text-indigo-600">
-                  <a href="https://example.com" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
-                    Live Demo <HiExternalLink />
-                  </a>
-                  <span>•</span>
-                  <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
-                    GitHub Code <HiExternalLink />
-                  </a>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500 font-medium mt-0.5">
-                Tech Stack: React.js, Tailwind CSS, Context API, REST API
-              </p>
-              <ul className="mt-2 list-disc list-inside text-xs sm:text-sm text-gray-700 space-y-1">
-                <li>
-                  Architected a complete online catalog with live search, dynamic category filtering, and real-time price slider.
-                </li>
-                <li>
-                  Engineered global cart state management with React Context and localStorage persistence for persistent shopping sessions.
-                </li>
-                <li>
-                  Designed a smooth slide-over cart drawer with instant quantity calculations and simulated checkout flow.
-                </li>
-              </ul>
-            </div>
-
-            {/* Project 3 */}
-            <div className="border-l-2 border-emerald-600 pl-4 py-0.5">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
-                  TaskFlow - Agile Kanban Productivity App
-                  <span className="text-xs font-normal text-emerald-600 font-mono bg-emerald-50 px-2 py-0.5 rounded">
-                    Web Application
-                  </span>
-                </h3>
-                <div className="flex items-center gap-3 text-xs font-semibold text-emerald-600">
-                  <a href="https://example.com" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
-                    Live Demo <HiExternalLink />
-                  </a>
-                  <span>•</span>
-                  <a href="https://github.com/" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
-                    GitHub Code <HiExternalLink />
-                  </a>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500 font-medium mt-0.5">
-                Tech Stack: React.js, Tailwind CSS, JavaScript (ES6+), LocalStorage
-              </p>
-              <ul className="mt-2 list-disc list-inside text-xs sm:text-sm text-gray-700 space-y-1">
-                <li>
-                  Created an interactive task management board with multi-column status tracking (Backlog, In Progress, Completed).
-                </li>
-                <li>
-                  Implemented custom priority flags, title/description validation, and instant search filter.
-                </li>
-                <li>
-                  Employed clean modular component structure with reusable modal and card subcomponents.
-                </li>
-              </ul>
             </div>
           </div>
         </section>
 
         {/* Section: Education */}
         <section className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-sm"></span>
+          <h2 className="text-base font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3.5 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-sm"></span>
             Education
           </h2>
 
-          <div className="space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm">
-              <div>
-                <h3 className="font-bold text-gray-900">
-                  B.Sc. in Computer Science &amp; Engineering (CSE)
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  Your University / College Name, City
-                </p>
+          <div className="space-y-3.5">
+            {profileData.education.map((edu, idx) => (
+              <div key={idx} className="flex flex-col sm:flex-row sm:items-start sm:justify-between text-xs sm:text-sm">
+                <div>
+                  <h3 className="font-bold text-gray-900">{edu.degree}</h3>
+                  <p className="text-indigo-700 font-semibold">
+                    {edu.institution} • {edu.location}
+                  </p>
+                  {edu.coursework && (
+                    <p className="text-gray-500 text-xs mt-1">
+                      <strong>Relevant Coursework:</strong> {edu.coursework.slice(0, 4).join(", ")}
+                    </p>
+                  )}
+                </div>
+                <div className="text-left sm:text-right mt-1 sm:mt-0 shrink-0">
+                  <span className="font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 inline-block text-xs">
+                    {edu.grade}
+                  </span>
+                  <p className="text-gray-500 font-mono text-xs mt-0.5">{edu.period}</p>
+                </div>
               </div>
-              <div className="text-xs sm:text-sm text-gray-500 font-medium mt-1 sm:mt-0 sm:text-right">
-                <span>Graduation Year: 2025 / 2026</span>
-                <span className="block text-blue-600 font-semibold">CGPA: 3.50+ / 4.00</span>
-              </div>
-            </div>
-            <p className="text-xs text-gray-600">
-              <strong className="font-semibold text-gray-700">Relevant Coursework:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Web Engineering, Software Architecture.
-            </p>
+            ))}
           </div>
         </section>
 
-        {/* Section: Certifications & Training */}
+        {/* Section: Featured Projects */}
         <section className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-sm"></span>
-            Certifications &amp; Training
+          <h2 className="text-base font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3.5 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-sm"></span>
+            Featured Engineering Projects
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
-              <h4 className="font-semibold text-gray-900">
-                Complete Web Development Bootcamp (MERN)
-              </h4>
-              <p className="text-xs text-gray-500 mt-0.5">Online Learning Academy (6-Month Intensive)</p>
-              <p className="text-xs text-gray-600 mt-1">
-                Completed 60+ assignments, built 10+ real-world web apps using React, Tailwind CSS, Node, and MongoDB.
-              </p>
-            </div>
-
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
-              <h4 className="font-semibold text-gray-900">
-                Responsive Web Design &amp; JavaScript Algorithms
-              </h4>
-              <p className="text-xs text-gray-500 mt-0.5">freeCodeCamp Certification</p>
-              <p className="text-xs text-gray-600 mt-1">
-                Demonstrated mastery in semantic HTML5, CSS Flexbox/Grid, and algorithmic JavaScript problem-solving.
-              </p>
-            </div>
+          <div className="space-y-4">
+            {projects.map((proj) => (
+              <div key={proj.id} className="border-l-2 border-indigo-600 pl-4 py-0.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900 flex items-center gap-2">
+                    {proj.title}
+                    <span className="text-xs font-normal text-indigo-700 font-mono bg-indigo-50 px-2 py-0.5 rounded">
+                      {proj.category}
+                    </span>
+                  </h3>
+                  <div className="flex items-center gap-3 text-xs font-semibold text-indigo-600">
+                    <a href={proj.live} target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
+                      Live Demo <HiExternalLink />
+                    </a>
+                    <span>•</span>
+                    <a href={proj.github} target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
+                      GitHub Code <HiExternalLink />
+                    </a>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 font-medium mt-0.5">
+                  Tech Stack: {proj.technologies.join(", ")}
+                </p>
+                <ul className="mt-1.5 list-disc list-inside text-xs sm:text-sm text-gray-700 space-y-0.5">
+                  <li>{proj.description}</li>
+                  {proj.challenges && (
+                    <li>
+                      <strong>Engineering Solution:</strong> {proj.challenges[0]}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Section: Soft Skills & Languages */}
-        <section>
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-sm"></span>
-            Soft Skills &amp; Languages
+        {/* Section: Practical Experience */}
+        <section className="mb-6">
+          <h2 className="text-base font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3.5 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-sm"></span>
+            Experience &amp; Leadership
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-700">
-            <div>
-              <span className="font-semibold text-gray-900 block mb-1">Soft Skills:</span>
-              <p>Problem Solving, Collaborative Teamwork, Fast Learner &amp; Adaptability, Time Management, Attention to Detail.</p>
-            </div>
-            <div>
-              <span className="font-semibold text-gray-900 block mb-1">Languages:</span>
-              <p>Bengali (Native), English (Professional Working Proficiency).</p>
-            </div>
+          <div className="space-y-3.5">
+            {profileData.experiences.map((exp, idx) => (
+              <div key={idx} className="border-l-2 border-indigo-400 pl-4 py-0.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                  <div>
+                    <h3 className="text-sm sm:text-base font-bold text-gray-900">{exp.role}</h3>
+                    <p className="text-xs font-semibold text-indigo-600">
+                      {exp.company} • {exp.location}
+                    </p>
+                  </div>
+                  <span className="text-xs font-medium text-gray-500 font-mono">
+                    {exp.period}
+                  </span>
+                </div>
+                <ul className="mt-1.5 list-disc list-inside text-xs sm:text-sm text-gray-700 space-y-0.5">
+                  {exp.responsibilities.map((task, taskIdx) => (
+                    <li key={taskIdx}>{task}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section: Certifications */}
+        <section>
+          <h2 className="text-base font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-1 mb-3 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-indigo-600 rounded-sm"></span>
+            Certifications
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+            {profileData.certifications.map((cert, idx) => (
+              <div key={idx} className="p-3 bg-gray-50 rounded-lg border border-gray-100">
+                <span className="font-bold text-gray-900 block">{cert.title}</span>
+                <span className="text-xs text-indigo-600 font-semibold">{cert.issuer} ({cert.year})</span>
+                <p className="text-xs text-gray-600 mt-1">{cert.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 

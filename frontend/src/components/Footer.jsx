@@ -1,131 +1,124 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiMail, HiArrowUp } from "react-icons/hi";
+import profileData from "../data/profileData";
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const initial = profileData.name ? profileData.name.charAt(0).toUpperCase() : "F";
+  const firstName = profileData.name.split(" ")[0] || "Fatema";
+
   return (
-    <footer className="bg-white border-t border-gray-200/90 text-gray-600 print:hidden mt-auto">
+    <footer className="bg-[#05080f] border-t border-slate-800 text-slate-400 print:hidden mt-auto">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Brand & Mission */}
           <div className="md:col-span-2 space-y-3">
             <Link
               to="/"
-              className="text-xl font-extrabold text-gray-900 flex items-center gap-2"
+              className="text-xl font-black text-white flex items-center gap-2.5"
             >
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-mono text-sm shadow-xs">
-                D
+              <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 flex items-center justify-center text-white font-mono text-sm shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                {initial}
               </span>
               <span>
-                DevPortfolio<span className="text-blue-600">.</span>
+                {firstName}<span className="text-pink-500 font-bold">.dev</span>
               </span>
             </Link>
-            <p className="text-sm text-gray-500 max-w-md leading-relaxed">
-              Passionate Fresher Web Developer specializing in building clean, responsive, and user-centric web applications with React.js and modern technologies.
+            <p className="text-sm text-slate-400 max-w-md leading-relaxed">
+              Software Engineer &amp; Full-Stack Developer studying at Daffodil International University. Building modern, high-performance web products with clean code and modern architectures.
             </p>
             <div className="pt-1 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span className="text-xs text-gray-500 font-medium">
-                Open to Junior Frontend / Full-Stack Opportunities
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]"></span>
+              <span className="text-xs text-slate-400 font-medium">
+                {profileData.status}
               </span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
               Navigation
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/#home" className="hover:text-blue-600 transition">
+                <a href="/#home" className="hover:text-cyan-400 transition">
                   Home
                 </a>
               </li>
               <li>
-                <a href="/#about" className="hover:text-blue-600 transition">
+                <a href="/#about" className="hover:text-cyan-400 transition">
                   About Me
                 </a>
               </li>
               <li>
-                <a href="/#skills" className="hover:text-blue-600 transition">
-                  Skills
+                <a href="/#skills" className="hover:text-cyan-400 transition">
+                  Technical Arsenal
                 </a>
               </li>
               <li>
-                <a href="/#projects" className="hover:text-blue-600 transition">
+                <a href="/#projects" className="hover:text-cyan-400 transition">
                   Featured Projects
                 </a>
               </li>
               <li>
-                <Link to="/resume" className="text-blue-600 font-semibold hover:underline">
+                <Link to="/resume" className="text-cyan-400 font-bold hover:underline">
                   Resume / CV &rarr;
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Connect & Socials */}
+          {/* Connect Details */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
-              Get in Touch
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              Connect
             </h4>
-            <p className="text-sm text-gray-500">
-              Have a question or looking to hire? Feel free to reach out anytime.
-            </p>
-            <div className="flex items-center gap-3 pt-1">
+            <div className="space-y-2 text-sm">
               <a
-                href="https://github.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub Profile"
-                className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-900 hover:text-white flex items-center justify-center text-gray-700 transition"
+                href={`mailto:${profileData.email}`}
+                className="flex items-center gap-2 hover:text-cyan-400 transition"
               >
-                <FaGithub className="text-base" />
+                <HiMail className="text-cyan-400 text-base shrink-0" />
+                <span className="truncate">{profileData.email}</span>
               </a>
-              <a
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn Profile"
-                className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-blue-600 hover:text-white flex items-center justify-center text-gray-700 transition"
-              >
-                <FaLinkedin className="text-base" />
-              </a>
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Twitter Profile"
-                className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-sky-500 hover:text-white flex items-center justify-center text-gray-700 transition"
-              >
-                <FaTwitter className="text-base" />
-              </a>
-              <a
-                href="mailto:youremail@example.com"
-                aria-label="Send Email"
-                className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-rose-500 hover:text-white flex items-center justify-center text-gray-700 transition"
-              >
-                <HiMail className="text-base" />
-              </a>
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href={profileData.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center transition border border-slate-700 hover:border-cyan-400"
+                  aria-label="GitHub"
+                >
+                  <FaGithub className="text-lg text-cyan-400" />
+                </a>
+                <a
+                  href={profileData.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 flex items-center justify-center transition border border-blue-500/30"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin className="text-lg text-blue-400" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        {/* Bottom Sub-footer */}
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            &copy; {new Date().getFullYear()} DevPortfolio. Designed &amp; Built with React &amp; Tailwind CSS.
+            &copy; {new Date().getFullYear()} {profileData.name}. Daffodil International University.
           </p>
 
           <button
             onClick={scrollToTop}
-            aria-label="Scroll back to top"
-            className="inline-flex items-center gap-1.5 text-gray-600 hover:text-blue-600 font-medium transition cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-slate-400 hover:text-cyan-400 font-bold transition cursor-pointer"
           >
             <span>Back to top</span>
             <HiArrowUp className="text-sm" />

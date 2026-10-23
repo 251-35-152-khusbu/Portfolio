@@ -7,33 +7,36 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 px-6 md:px-12 max-w-7xl mx-auto"
+      className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative"
     >
+      {/* Ambient Glow */}
+      <div className="w-[30rem] h-[30rem] bg-pink-500/10 rounded-full blur-[150px] absolute -bottom-10 right-1/4 -z-10 pointer-events-none"></div>
+
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-semibold uppercase tracking-wider">
-          <HiOutlineSparkles className="text-blue-600 text-sm" />
-          <span>My Portfolio Projects</span>
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-semibold uppercase tracking-wider shadow-[0_0_15px_rgba(236,72,153,0.15)]">
+          <HiOutlineSparkles className="text-pink-400 text-sm" />
+          <span>Engineering Portfolio</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
-          Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Projects</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-500">Projects</span>
         </h2>
 
-        <p className="text-base sm:text-lg text-gray-600">
-          Explore real-world web applications I built to solve practical problems, demonstrating clean code, modern UI/UX design, and responsive frontend architectures.
+        <p className="text-base sm:text-lg text-slate-300">
+          Explore production-grade full-stack web applications and software systems demonstrating clean architecture and responsive user experiences.
         </p>
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project) => (
           <div
             key={project.id}
-            className="group bg-white rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col overflow-hidden"
+            className="group bg-slate-900/80 rounded-2xl border border-slate-800 shadow-xl hover:shadow-[0_0_35px_rgba(6,182,212,0.2)] hover:border-cyan-500/50 transition-all duration-300 flex flex-col overflow-hidden backdrop-blur-xl"
           >
             {/* Card Thumbnail / Image Container */}
-            <div className="relative aspect-video w-full overflow-hidden bg-gray-100 border-b border-gray-100">
+            <div className="relative aspect-video w-full overflow-hidden bg-slate-950 border-b border-slate-800">
               <img
                 src={project.image}
                 alt={project.title}
@@ -41,96 +44,72 @@ const Projects = () => {
                 loading="lazy"
               />
               {project.category && (
-                <span className="absolute top-3 left-3 bg-gray-900/80 backdrop-blur-xs text-white text-[11px] font-medium px-2.5 py-1 rounded-md shadow-xs">
+                <span className="absolute top-3.5 left-3.5 bg-slate-950/90 backdrop-blur-md text-cyan-300 border border-cyan-500/30 text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
                   {project.category}
                 </span>
               )}
             </div>
 
             {/* Card Body */}
-            <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
-              <div className="space-y-2.5">
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+            <div className="p-7 flex flex-col flex-grow justify-between space-y-5">
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-slate-300 line-clamp-2 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Tech Pills */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
-                  {project.technologies.slice(0, 4).map((tech) => (
+                  {project.technologies.slice(0, 5).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-0.5 text-xs font-medium rounded-md bg-blue-50 text-blue-700 border border-blue-100"
+                      className="px-2.5 py-0.5 text-xs font-semibold rounded-md bg-slate-800/90 text-cyan-300 border border-slate-700 hover:border-cyan-500/40 transition"
                     >
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 4 && (
-                    <span className="px-2 py-0.5 text-xs font-medium rounded-md bg-gray-100 text-gray-600">
-                      +{project.technologies.length - 4}
-                    </span>
-                  )}
                 </div>
               </div>
 
-              {/* Card Footer Actions */}
-              <div className="pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
+              {/* Action Buttons */}
+              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3 text-sm">
                 <Link
                   to={`/projects/${project.id}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-800 transition"
+                  className="inline-flex items-center gap-1.5 font-bold text-cyan-400 hover:text-cyan-300 transition"
                 >
-                  <span>Details &amp; Tech</span>
-                  <HiArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
+                  <span>Details &amp; Architecture</span>
+                  <HiArrowRight className="text-sm" />
                 </Link>
 
-                <div className="flex items-center gap-2">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="View Source Code on GitHub"
-                      className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
-                    >
-                      <FaGithub className="text-lg" />
-                    </a>
-                  )}
+                <div className="flex items-center gap-3">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition"
+                    title="View Source on GitHub"
+                    aria-label="GitHub Repository"
+                  >
+                    <FaGithub className="text-base" />
+                  </a>
 
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="Open Live Demo"
-                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
-                    >
-                      <span>Demo</span>
-                      <HiExternalLink className="text-sm" />
-                    </a>
-                  )}
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold text-xs px-3.5 py-2 rounded-lg shadow-[0_0_15px_rgba(6,182,212,0.3)] transition"
+                  >
+                    <span>Live Demo</span>
+                    <HiExternalLink className="text-xs" />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Bottom Github Note */}
-      <div className="mt-12 text-center">
-        <p className="text-sm text-gray-500">
-          Want to see more code and experiments? Check out my{" "}
-          <a
-            href="https://github.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="font-semibold text-blue-600 hover:underline inline-flex items-center gap-1"
-          >
-            GitHub profile <HiExternalLink />
-          </a>
-        </p>
       </div>
     </section>
   );

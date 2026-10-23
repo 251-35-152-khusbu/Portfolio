@@ -6,7 +6,8 @@ import {
   HiOutlineChatAlt2,
   HiOutlineCheckCircle,
 } from "react-icons/hi";
-import { FaGithub, FaLinkedin, FaTwitter, FaPaperPlane } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
+import profileData from "../data/profileData";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,252 +42,212 @@ const Contact = () => {
 
     setStatus({ submitting: true, submitted: false, error: null });
 
-    // Simulate sending message
     setTimeout(() => {
       setStatus({ submitting: false, submitted: true, error: null });
       setFormData({ name: "", email: "", subject: "", message: "" });
 
-      // Auto-hide success message after 6 seconds
       setTimeout(() => {
         setStatus((prev) => ({ ...prev, submitted: false }));
       }, 6000);
-    }, 1000);
+    }, 900);
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="contact" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative">
+      {/* Background glow */}
+      <div className="w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px] absolute -top-10 left-10 -z-10 pointer-events-none"></div>
+
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-semibold uppercase tracking-wider">
-          <HiOutlineChatAlt2 className="text-blue-600 text-sm" />
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+          <HiOutlineChatAlt2 className="text-cyan-400 text-sm" />
           <span>Get In Touch</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
-          Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Connect</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-500">Exceptional</span>
         </h2>
 
-        <p className="text-base sm:text-lg text-gray-600">
-          Have an entry-level opening, internship, freelance project, or simply want to chat about tech? My inbox is always open.
+        <p className="text-base sm:text-lg text-slate-300">
+          Have an open software engineering role, contract project, or technical question? Feel free to reach out directly.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Left Column: Direct Info Cards & Social Links (5 cols) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* Left Column: Direct Contact Info & Socials */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-8 shadow-xs space-y-6">
-            <h3 className="text-xl font-bold text-gray-900">
-              Contact Information
+          <div className="bg-slate-900/80 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-2xl space-y-6 backdrop-blur-xl">
+            <h3 className="text-xl font-bold text-white">
+              Direct Channels
             </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              I am actively looking for full-time junior frontend or full-stack opportunities and am available to join immediately.
+            <p className="text-sm text-slate-300 leading-relaxed">
+              I am actively interviewing and open for full-time, intern, and remote software engineering opportunities.
             </p>
 
-            <div className="space-y-4 pt-2">
-              {/* Email */}
+            <div className="space-y-4 text-sm text-slate-300">
               <a
-                href="mailto:youremail@example.com"
-                className="flex items-start gap-4 p-3.5 rounded-xl bg-gray-50 hover:bg-blue-50/70 border border-gray-100 hover:border-blue-200 transition group"
+                href={`mailto:${profileData.email}`}
+                className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 group"
               >
-                <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 shadow-[0_0_10px_rgba(6,182,212,0.2)] transition-transform">
                   <HiOutlineMail className="text-xl" />
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 font-medium block">
-                    Email Address
-                  </span>
-                  <span className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                    youremail@example.com
+                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider">DIU Email</span>
+                  <span className="font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                    {profileData.email}
                   </span>
                 </div>
               </a>
 
-              {/* Phone */}
               <a
-                href="tel:+8801700000000"
-                className="flex items-start gap-4 p-3.5 rounded-xl bg-gray-50 hover:bg-blue-50/70 border border-gray-100 hover:border-blue-200 transition group"
+                href={`tel:${profileData.phone}`}
+                className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 group"
               >
-                <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 shadow-[0_0_10px_rgba(16,185,129,0.2)] transition-transform">
                   <HiOutlinePhone className="text-xl" />
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 font-medium block">
-                    Phone / WhatsApp
-                  </span>
-                  <span className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                    +880 1700-000000
+                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Phone / WhatsApp</span>
+                  <span className="font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                    {profileData.phone}
                   </span>
                 </div>
               </a>
 
-              {/* Location */}
-              <div className="flex items-start gap-4 p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+              <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                <div className="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(168,85,247,0.2)]">
                   <HiOutlineLocationMarker className="text-xl" />
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 font-medium block">
-                    Location
-                  </span>
-                  <span className="text-sm font-semibold text-gray-900">
-                    Dhaka, Bangladesh (Remote / On-site)
+                  <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Location</span>
+                  <span className="font-semibold text-white">
+                    {profileData.location} (Dinajpur / Dhaka)
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Social Links Bar */}
-            <div className="pt-4 border-t border-gray-100">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-3">
-                Social Profiles
+            {/* Social Links */}
+            <div className="pt-4 border-t border-slate-800">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3">
+                Professional Profiles
               </span>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://github.com/"
+                  href={profileData.github}
                   target="_blank"
                   rel="noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white flex items-center gap-2 text-sm font-semibold border border-slate-700 hover:border-cyan-400 shadow-md hover:scale-105 transition-all"
                   aria-label="GitHub Profile"
-                  className="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-900 hover:text-white flex items-center justify-center text-gray-700 transition"
                 >
-                  <FaGithub className="text-lg" />
+                  <FaGithub className="text-base text-cyan-400" />
+                  <span>GitHub Profile</span>
                 </a>
                 <a
-                  href="https://linkedin.com/"
+                  href={profileData.linkedin}
                   target="_blank"
                   rel="noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex items-center gap-2 text-sm font-semibold shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:scale-105 transition-all"
                   aria-label="LinkedIn Profile"
-                  className="w-10 h-10 rounded-xl bg-gray-100 hover:bg-blue-600 hover:text-white flex items-center justify-center text-gray-700 transition"
                 >
-                  <FaLinkedin className="text-lg" />
-                </a>
-                <a
-                  href="https://twitter.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Twitter Profile"
-                  className="w-10 h-10 rounded-xl bg-gray-100 hover:bg-sky-500 hover:text-white flex items-center justify-center text-gray-700 transition"
-                >
-                  <FaTwitter className="text-lg" />
+                  <FaLinkedin className="text-base" />
+                  <span>LinkedIn Profile</span>
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Interactive Contact Form (7 cols) */}
+        {/* Right Column: Contact Message Form */}
         <div className="lg:col-span-7">
-          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-10 shadow-xs">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Send a Direct Message
-            </h3>
-            <p className="text-sm text-gray-500 mb-6">
-              Fill out the form below and I'll respond as soon as possible.
+          <div className="bg-slate-900/80 rounded-2xl border border-slate-800 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+            <h3 className="text-xl font-bold text-white mb-2">Send a Direct Message</h3>
+            <p className="text-sm text-slate-300 mb-6">
+              Fill out this form and I will get back to you promptly.
             </p>
 
-            {/* Success Toast */}
-            {status.submitted && (
-              <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center gap-3">
-                <HiOutlineCheckCircle className="text-2xl text-emerald-600 shrink-0" />
-                <div>
-                  <p className="text-sm font-bold">Message sent successfully!</p>
-                  <p className="text-xs text-emerald-700">
-                    Thank you for reaching out. I'll get back to you shortly.
-                  </p>
-                </div>
+            {status.error && (
+              <div className="p-3 mb-6 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm">
+                {status.error}
               </div>
             )}
 
-            {/* Error Message */}
-            {status.error && (
-              <div className="mb-6 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm">
-                {status.error}
+            {status.submitted && (
+              <div className="p-4 mb-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm flex items-center gap-2.5 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                <HiOutlineCheckCircle className="text-xl text-emerald-400 shrink-0" />
+                <span>Thank you! Your message has been sent successfully. I'll reply shortly.</span>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-xs font-semibold text-gray-700 uppercase mb-1.5">
-                    Your Name <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                    Your Name <span className="text-pink-500">*</span>
                   </label>
                   <input
-                    id="name"
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="e.g. John Doe"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-sm transition"
                   />
                 </div>
-
-                {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-gray-700 uppercase mb-1.5">
-                    Email Address <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                    Your Email <span className="text-pink-500">*</span>
                   </label>
                   <input
-                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder="john@company.com"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-sm transition"
                   />
                 </div>
               </div>
 
-              {/* Subject */}
               <div>
-                <label htmlFor="subject" className="block text-xs font-semibold text-gray-700 uppercase mb-1.5">
-                  Subject / Role
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                  Subject
                 </label>
                 <input
-                  id="subject"
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Job Opportunity / Project Inquiry"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition"
+                  placeholder="Software Engineer Role / Project Inquiry"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-sm transition"
                 />
               </div>
 
-              {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-xs font-semibold text-gray-700 uppercase mb-1.5">
-                  Your Message <span className="text-rose-500">*</span>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                  Message <span className="text-pink-500">*</span>
                 </label>
                 <textarea
-                  id="message"
                   name="message"
-                  rows={5}
+                  rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Hello! We are looking for a Junior Frontend Developer to join our team..."
+                  placeholder="Tell me about your team, role, or project..."
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-sm transition resize-none"
                 ></textarea>
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={status.submitting}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-md shadow-blue-500/25 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 via-indigo-600 to-pink-600 hover:from-cyan-400 hover:to-pink-500 disabled:opacity-50 text-white font-bold px-8 py-3.5 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer text-sm"
               >
-                {status.submitting ? (
-                  <span>Sending Message...</span>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <FaPaperPlane className="text-sm" />
-                  </>
-                )}
+                <FaPaperPlane className="text-sm" />
+                <span>{status.submitting ? "Sending..." : "Send Message"}</span>
               </button>
             </form>
           </div>

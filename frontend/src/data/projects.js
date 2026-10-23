@@ -1,86 +1,118 @@
 import project1 from "../assets/projects/project1.png";
 import project2 from "../assets/projects/project2.png";
 import project3 from "../assets/projects/project3.svg";
+import project4 from "../assets/projects/project4.svg";
 
 const projects = [
   {
     id: 1,
-    title: "Developer Portfolio & Showcase",
+    title: "DevConnect - Full-Stack Developer Network",
     image: project1,
-    category: "Frontend Web Application",
+    category: "Full-Stack Web App",
     technologies: [
-      "React",
+      "React 19",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
       "Tailwind CSS",
-      "JavaScript (ES6+)",
-      "React Router",
-      "Vite"
+      "JWT"
     ],
     description:
-      "A modern, high-performance personal portfolio built for showcasing frontend engineering skills, interactive projects, and a responsive resume viewer. Features smooth section navigation, responsive mobile menu, dynamic routing, and ATS-friendly printable resume.",
-    live: "https://example.com/portfolio-demo",
-    github: "https://github.com/example/portfolio-frontend",
+      "A comprehensive developer collaboration platform enabling software engineers to showcase portfolios, share technical writeups, join discussions, and collaborate on open-source repositories. Features JWT authentication, real-time activity feeds, and profile markdown parsing.",
+    live: "https://devconnect-demo.vercel.app",
+    github: "https://github.com/251-35-152-khusbu/devconnect-fullstack",
     challenges: [
-      "Building a smooth active-section scroll spy with route-aware navigation",
-      "Crafting an ATS-compatible, print-optimized resume stylesheet in React",
-      "Ensuring fluid responsiveness across ultra-wide monitors down to small mobile viewports"
+      "Designing a robust JWT authentication flow with refresh tokens and secure HTTP-only cookies",
+      "Optimizing MongoDB aggregation queries for nested comments and multi-tag filtering",
+      "Building a responsive markdown editor with instant preview and syntax highlighting"
     ],
     future: [
-      "Dark / Light theme mode toggle with localStorage persistence",
-      "Interactive contact form integration via EmailJS / Web3Forms",
-      "Markdown-powered tech blog section with syntax highlighting"
+      "Direct peer-to-peer code snippet pairing using WebRTC",
+      "GitHub OAuth integration to sync public repos directly into user profiles",
+      "AI-driven semantic search for technical discussions using vector embeddings"
     ],
   },
   {
     id: 2,
-    title: "TechGear - Modern Tech Store",
+    title: "CloudStore - High-Performance E-Commerce Platform",
     image: project2,
-    category: "E-Commerce Web App",
+    category: "Full-Stack E-Commerce",
     technologies: [
-      "React",
+      "React 19",
+      "Node.js",
+      "PostgreSQL",
       "Tailwind CSS",
-      "JavaScript",
-      "Context API",
-      "REST API"
+      "Stripe API",
+      "Context API"
     ],
     description:
-      "A responsive, full-featured electronics and tech gadgets web application. Includes instant product category filtering, price range slider, real-time shopping cart drawer with quantity adjustments, and simulated checkout flow.",
-    live: "https://example.com/techgear-demo",
-    github: "https://github.com/example/techgear-ecommerce",
+      "A modern, full-featured electronics and tech gadgets web application. Includes instant product category filtering, price range slider, real-time shopping cart drawer with quantity adjustments, and simulated checkout flow.",
+    live: "https://cloudstore-demo.vercel.app",
+    github: "https://github.com/251-35-152-khusbu/cloudstore-ecommerce",
     challenges: [
-      "Global cart state management with React Context without unnecessary re-renders",
-      "Smooth slide-over modal drawer implementation for cart and mobile filters",
-      "Instant multi-criteria client-side search and category filtering"
+      "Handling concurrent cart updates and database inventory deductions without race conditions",
+      "Global cart state management with React Context without unnecessary parent re-renders",
+      "Building a smooth slide-over modal drawer implementation for cart and mobile filters"
     ],
     future: [
-      "Integration with Stripe payment gateway test API",
-      "User authentication and order history dashboard",
-      "Wishlist system with localStorage persistence"
+      "Integration with live Stripe webhook event listeners for payment confirmation",
+      "Automated order tracking updates sent via SendGrid transactional emails",
+      "Customer wishlist system with persistent sync across devices"
     ],
   },
   {
     id: 3,
-    title: "TaskFlow - Agile Kanban Board",
+    title: "TaskFlow - Agile Kanban & Automation Workspace",
     image: project3,
     category: "Productivity & SaaS",
     technologies: [
-      "React",
+      "React 19",
       "Tailwind CSS",
       "JavaScript (ES6+)",
+      "WebSockets",
       "LocalStorage"
     ],
     description:
       "An intuitive task management and productivity dashboard inspired by Trello and Jira. Supports custom task creation, priority color-coding, multi-stage workflow columns (Backlog, In Progress, Completed), and search indexing.",
-    live: "https://example.com/taskflow-demo",
-    github: "https://github.com/example/taskflow-kanban",
+    live: "https://taskflow-kanban.vercel.app",
+    github: "https://github.com/251-35-152-khusbu/taskflow-kanban",
     challenges: [
       "Seamless task state transitions across columns with proper data immutability",
-      "Persistent state synchronization with browser LocalStorage",
-      "Clean UI component design adhering to accessibility standards"
+      "Persistent state synchronization with browser LocalStorage and optimistic UI updates",
+      "Clean UI component design adhering to accessibility standards (WCAG 2.1)"
     ],
     future: [
-      "Drag and drop reordering using @dnd-kit/core",
+      "Full drag-and-drop reordering using @dnd-kit/core with smooth physics animations",
       "Firebase Firestore integration for multi-device real-time sync",
       "Subtasks checklist and due-date notification system"
+    ],
+  },
+  {
+    id: 4,
+    title: "InsightOps - Real-Time System & API Telemetry",
+    image: project4,
+    category: "DevOps & Cloud Monitoring",
+    technologies: [
+      "React 19",
+      "Python / FastAPI",
+      "Docker",
+      "Tailwind CSS",
+      "WebSockets",
+      "SVG Data Viz"
+    ],
+    description:
+      "A real-time telemetry dashboard for monitoring microservices, API latency, container health, and traffic spikes. Features live area sparklines, microservice health badges, automated threshold alerts, and instant WebSocket event feeds.",
+    live: "https://insightops-telemetry.vercel.app",
+    github: "https://github.com/251-35-152-khusbu/insightops-telemetry",
+    challenges: [
+      "Streaming continuous 1-second WebSocket metric updates without dropping frontend frame rates",
+      "Crafting responsive SVG data visualizations and sparklines without heavy external charting libraries",
+      "Designing clear warning states when service throughput exceeds predetermined capacity limits"
+    ],
+    future: [
+      "Prometheus & Grafana API exporter integration",
+      "Slack and Discord webhook automated incident notifications",
+      "Historical anomaly detection using lightweight machine learning models"
     ],
   },
 ];

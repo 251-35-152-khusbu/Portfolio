@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiMenuAlt3, HiX, HiDocumentText } from "react-icons/hi";
+import profileData from "../data/profileData";
 
 const navLinks = [
   { name: "Home", id: "home" },
@@ -20,7 +21,6 @@ const Navbar = () => {
 
   const isHomePage = location.pathname === "/";
 
-  // Shadow and active section detection when scrolling on home page
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -34,7 +34,7 @@ const Navbar = () => {
       sections.forEach((section) => {
         if (!section) return;
 
-        const top = section.offsetTop - 100;
+        const top = section.offsetTop - 120;
         const height = section.offsetHeight;
 
         if (window.scrollY >= top && window.scrollY < top + height) {
@@ -48,12 +48,14 @@ const Navbar = () => {
   }, [isHomePage]);
 
   const closeMenu = () => setMenuOpen(false);
+  const firstName = profileData.name.split(" ")[0] || "Fatema";
+  const initial = profileData.name ? profileData.name.charAt(0).toUpperCase() : "F";
 
   return (
     <header
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 print:hidden ${
         scrolled || !isHomePage
-          ? "bg-white/90 backdrop-blur-md shadow-md border-b border-gray-100"
+          ? "bg-[#070b14]/90 backdrop-blur-xl border-b border-slate-800/80 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
           : "bg-transparent"
       }`}
     >
@@ -61,13 +63,13 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="text-2xl font-extrabold tracking-tight text-gray-900 group flex items-center gap-2"
+          className="text-2xl font-black tracking-tight text-white group flex items-center gap-2.5"
         >
-          <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-mono text-lg shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
-            D
+          <span className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 flex items-center justify-center text-white font-mono text-xl shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:scale-110 group-hover:rotate-3 transition-transform">
+            {initial}
           </span>
-          <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-blue-600 bg-clip-text text-transparent">
-            DevPortfolio<span className="text-blue-600">.</span>
+          <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent font-extrabold">
+            {firstName}<span className="text-pink-500">.dev</span>
           </span>
         </Link>
 
@@ -81,16 +83,16 @@ const Navbar = () => {
               <li key={link.id}>
                 <a
                   href={href}
-                  className={`relative py-1 font-medium text-sm transition-colors duration-200 ${
+                  className={`relative py-1 font-semibold text-sm transition-all duration-200 ${
                     isLinkActive
-                      ? "text-blue-600 font-semibold"
-                      : "text-gray-600 hover:text-blue-600"
+                      ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute left-0 -bottom-1 h-0.5 bg-blue-600 transition-all duration-300 ${
-                      isLinkActive ? "w-full" : "w-0 group-hover:w-full"
+                    className={`absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 transition-all duration-300 rounded-full ${
+                      isLinkActive ? "w-full" : "w-0 hover:w-full"
                     }`}
                   ></span>
                 </a>
@@ -103,7 +105,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/resume"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 via-indigo-600 to-pink-600 hover:from-cyan-400 hover:via-indigo-500 hover:to-pink-500 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
           >
             <HiDocumentText className="text-lg" />
             Resume
@@ -114,51 +116,47 @@ const Navbar = () => {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle navigation menu"
-          className="md:hidden text-2xl text-gray-800 p-2 rounded-lg hover:bg-gray-100 transition focus:outline-none"
+          className="md:hidden text-2xl text-slate-200 p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition focus:outline-none"
         >
           {menuOpen ? <HiX /> : <HiMenuAlt3 />}
         </button>
       </nav>
 
-      {/* Mobile Menu Drawer */}
-      <div
-        className={`md:hidden bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-xl overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-96 py-6 px-6" : "max-h-0 py-0 px-6"
-        }`}
-      >
-        <ul className="flex flex-col gap-4">
-          {navLinks.map((link) => {
-            const href = isHomePage ? `#${link.id}` : `/#${link.id}`;
-            const isLinkActive = isHomePage && active === link.id;
+      {/* Mobile Drawer Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#0a0f1d]/95 backdrop-blur-2xl border-b border-slate-800 shadow-2xl px-6 py-6 transition-all duration-300 animate-fadeIn">
+          <ul className="flex flex-col space-y-4">
+            {navLinks.map((link) => {
+              const href = isHomePage ? `#${link.id}` : `/#${link.id}`;
+              const isLinkActive = isHomePage && active === link.id;
 
-            return (
-              <li key={link.id}>
-                <a
-                  href={href}
-                  onClick={closeMenu}
-                  className={`block py-1.5 text-base font-medium transition ${
-                    isLinkActive ? "text-blue-600 font-semibold" : "text-gray-700 hover:text-blue-600"
-                  }`}
-                >
-                  {link.name}
-                </a>
-              </li>
-            );
-          })}
-
-          {/* Mobile Resume Button */}
-          <li className="pt-2 border-t border-gray-100">
-            <Link
-              to="/resume"
-              onClick={closeMenu}
-              className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-xl font-semibold shadow hover:bg-blue-700 transition"
-            >
-              <HiDocumentText className="text-xl" />
-              View Full Resume
-            </Link>
-          </li>
-        </ul>
-      </div>
+              return (
+                <li key={link.id}>
+                  <a
+                    href={href}
+                    onClick={closeMenu}
+                    className={`block py-2 text-base font-semibold transition ${
+                      isLinkActive ? "text-cyan-400 font-bold" : "text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
+            <li className="pt-2">
+              <Link
+                to="/resume"
+                onClick={closeMenu}
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 via-indigo-600 to-pink-600 text-white py-3 rounded-xl font-bold shadow-lg transition"
+              >
+                <HiDocumentText className="text-lg" />
+                View Resume / CV
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
