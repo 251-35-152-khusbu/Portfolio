@@ -75,8 +75,8 @@ const Navbar = () => {
               }}
             />
           </div>
-          <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent font-extrabold">
-            {firstName}<span className="text-pink-500">.dev</span>
+          <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent font-extrabold lowercase">
+            {profileData.brandPrefix || "khusbu"}<span className="text-pink-500 font-bold">.dev</span>
           </span>
         </Link>
 

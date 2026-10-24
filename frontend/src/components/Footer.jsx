@@ -22,10 +22,10 @@ const Footer = () => {
               className="text-xl font-black text-white flex items-center gap-2.5"
             >
               <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 flex items-center justify-center text-white font-mono text-sm shadow-[0_0_15px_rgba(6,182,212,0.4)]">
-                {initial}
+                K
               </span>
-              <span>
-                {firstName}<span className="text-pink-500 font-bold">.dev</span>
+              <span className="lowercase font-extrabold">
+                {profileData.brandPrefix || "khusbu"}<span className="text-pink-500 font-bold">.dev</span>
               </span>
             </Link>
             <p className="text-sm text-slate-400 max-w-md leading-relaxed">

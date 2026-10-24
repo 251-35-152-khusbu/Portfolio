@@ -10,6 +10,8 @@ export const profileData = {
   linkedin: "https://www.linkedin.com/in/fatema-akter-khusbu-4084a228b",
   portfolioUrl: "https://github.com/251-35-152-khusbu",
   avatarUrl: "https://github.com/251-35-152-khusbu.png",
+  brandName: "khusbu.dev",
+  brandPrefix: "khusbu",
 
   bioHeadline: "Engineering high-impact software solutions, responsive web interfaces, and scalable backend systems.",
   bioDescription1: "I am a passionate, driven Software Engineering student at Daffodil International University (DIU) with a strong foundation in computational thinking, software architecture, and modern full-stack development. I build end-to-end applications bridging dynamic React user interfaces with scalable, secure backend APIs and databases.",

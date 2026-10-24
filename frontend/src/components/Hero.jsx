@@ -127,7 +127,7 @@ const Hero = () => {
                 </div>
                 <span className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                  FatemaProfile.tsx
+                  KhusbuProfile.tsx
                 </span>
                 <span className="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">
                   LIVE
