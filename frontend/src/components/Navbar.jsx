@@ -65,9 +65,16 @@ const Navbar = () => {
           to="/"
           className="text-2xl font-black tracking-tight text-white group flex items-center gap-2.5"
         >
-          <span className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 flex items-center justify-center text-white font-mono text-xl shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:scale-110 group-hover:rotate-3 transition-transform">
-            {initial}
-          </span>
+          <div className="w-10 h-10 rounded-xl p-0.5 bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-500 shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:scale-110 group-hover:rotate-3 transition-transform overflow-hidden flex items-center justify-center shrink-0">
+            <img
+              src={profileData.avatarUrl}
+              alt={profileData.name}
+              className="w-full h-full object-cover rounded-[10px]"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          </div>
           <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent font-extrabold">
             {firstName}<span className="text-pink-500">.dev</span>
           </span>

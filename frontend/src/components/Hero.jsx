@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { HiDocumentText, HiArrowRight, HiSparkles } from "react-icons/hi";
 import { FaReact, FaJsSquare, FaNodeJs, FaPython, FaDocker } from "react-icons/fa";
 import { SiTailwindcss, SiPostgresql, SiMongodb } from "react-icons/si";
+import heroImg from "../assets/hero.png";
 import profileData from "../data/profileData";
 
 const Hero = () => {
@@ -111,84 +112,69 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Column: Code Showcase & Visual Card */}
-        <div className="lg:col-span-5 relative">
-          {/* Visual Code Box */}
-          <div className="relative bg-[#0d1424] rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] border border-slate-700/80 overflow-hidden text-left hover:border-cyan-500/50 transition duration-500">
-            {/* Terminal Window Header */}
-            <div className="bg-slate-900/90 px-4 py-3 flex items-center justify-between border-b border-slate-800">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_6px_#f43f5e]"></div>
-                <div className="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_6px_#f59e0b]"></div>
-                <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_6px_#10b981]"></div>
-              </div>
-              <span className="text-xs text-slate-400 font-mono">FatemaEngineer.ts</span>
-              <div className="w-12"></div>
-            </div>
-
-            {/* Code Content */}
-            <div className="p-5 font-mono text-xs sm:text-sm text-slate-300 leading-relaxed overflow-x-auto">
-              <p>
-                <span className="text-purple-400">const</span>{" "}
-                <span className="text-cyan-400">softwareEngineer</span> = &#123;
-              </p>
-              <p className="pl-4">
-                <span className="text-slate-400">name:</span>{" "}
-                <span className="text-pink-400">"{profileData.name}"</span>,
-              </p>
-              <p className="pl-4">
-                <span className="text-slate-400">university:</span>{" "}
-                <span className="text-cyan-300">"Daffodil International University"</span>,
-              </p>
-              <p className="pl-4">
-                <span className="text-slate-400">major:</span>{" "}
-                <span className="text-emerald-400">"B.Sc. in Software Engineering"</span>,
-              </p>
-              <p className="pl-4">
-                <span className="text-slate-400">techStack:</span> [
-              </p>
-              <p className="pl-8 text-amber-300">
-                "React 19", "Node.js", "Python", "PostgreSQL", "Docker"
-              </p>
-              <p className="pl-4">],</p>
-              <p className="pl-4">
-                <span className="text-slate-400">passion:</span>{" "}
-                <span className="text-cyan-300">"Scalable Architecture &amp; Clean Code"</span>,
-              </p>
-              <p className="pl-4">
-                <span className="text-slate-400">hireable:</span>{" "}
-                <span className="text-emerald-400">true</span>,
-              </p>
-              <p className="pl-4">
-                <span className="text-slate-400">buildSolutions():</span>{" "}
-                <span className="text-purple-400">() =&gt;</span>{" "}
-                <span className="text-emerald-300">"High-performance &amp; modern"</span>
-              </p>
-              <p>&#125;;</p>
-
-              <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-emerald-400">
-                  <span className="animate-pulse">●</span> Tests &amp; Builds Passing
+        {/* Right Column: Hero Profile Photo Card */}
+        <div className="lg:col-span-5 relative flex justify-center">
+          {/* Outer Radiant Glow Container */}
+          <div className="relative w-full max-w-md p-1.5 rounded-3xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-pink-500 shadow-[0_0_50px_rgba(6,182,212,0.35)] transition-all duration-500 hover:shadow-[0_0_70px_rgba(236,72,153,0.45)]">
+            <div className="bg-[#0b1120] rounded-[22px] overflow-hidden">
+              
+              {/* Window Header */}
+              <div className="bg-slate-900/90 px-4 py-2.5 flex items-center justify-between border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_6px_#f43f5e]"></div>
+                  <div className="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_6px_#f59e0b]"></div>
+                  <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_6px_#10b981]"></div>
+                </div>
+                <span className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                  FatemaProfile.tsx
                 </span>
-                <span className="text-cyan-400 font-mono">SWE @ DIU</span>
+                <span className="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">
+                  LIVE
+                </span>
+              </div>
+
+              {/* Photo Showcase Container */}
+              <div className="relative aspect-square sm:aspect-[4/4.2] overflow-hidden bg-slate-950 flex items-center justify-center group">
+                <img
+                  src={profileData.avatarUrl}
+                  alt={profileData.name}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => {
+                    e.currentTarget.src = heroImg;
+                  }}
+                />
+
+                {/* Ambient dark gradient vignette at the bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-90 pointer-events-none"></div>
+
+                {/* Name & Role overlay bar at bottom of photo */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-900/85 backdrop-blur-md border border-slate-700/60 flex items-center justify-between shadow-lg">
+                  <div>
+                    <p className="text-sm font-bold text-white tracking-wide">{profileData.name}</p>
+                    <p className="text-xs text-cyan-400 font-medium">B.Sc. in Software Engineering @ DIU</p>
+                  </div>
+                  <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Floating Pill Badges with Glow */}
-          <div className="absolute -bottom-4 -left-4 bg-slate-900/95 backdrop-blur-xl border border-cyan-500/40 rounded-xl p-3 shadow-[0_0_20px_rgba(6,182,212,0.25)] flex items-center gap-3">
+          {/* Floating Pill Badge 1: Top Right */}
+          <div className="absolute -top-3 -right-2 sm:-right-4 bg-slate-900/95 backdrop-blur-xl border border-pink-500/40 rounded-xl px-3.5 py-2 shadow-[0_0_20px_rgba(236,72,153,0.3)] flex items-center gap-2 animate-bounce">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]"></span>
+            <p className="text-xs font-bold text-white">Open for Roles</p>
+          </div>
+
+          {/* Floating Pill Badge 2: Bottom Left */}
+          <div className="absolute -bottom-5 -left-2 sm:-left-4 bg-slate-900/95 backdrop-blur-xl border border-cyan-500/40 rounded-xl p-3 shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
               4+
             </div>
             <div>
               <p className="text-xs font-bold text-white">Full-Stack Projects</p>
-              <p className="text-[11px] text-cyan-400">Live Demos &amp; GitHub</p>
+              <p className="text-[11px] text-cyan-400 font-semibold">React 19 • Python • Node</p>
             </div>
-          </div>
-
-          <div className="absolute -top-4 -right-4 bg-slate-900/95 backdrop-blur-xl border border-pink-500/40 rounded-xl p-3 shadow-[0_0_20px_rgba(236,72,153,0.25)] flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]"></span>
-            <p className="text-xs font-bold text-white">Production Ready</p>
           </div>
         </div>
       </div>

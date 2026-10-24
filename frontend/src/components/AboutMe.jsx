@@ -41,11 +41,14 @@ const AboutMe = () => {
             <div className="w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl absolute -top-4 -right-4 -z-10"></div>
 
             <div className="flex items-center gap-4 mb-6 pb-6 border-b border-slate-800">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-pink-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-pink-500 p-0.5 shadow-[0_0_20px_rgba(6,182,212,0.4)] shrink-0 overflow-hidden">
                 <img
-                  src={heroImg}
-                  alt="Fatema Akter Khusbu"
-                  className="w-10 h-10 object-contain brightness-200"
+                  src={profileData.avatarUrl}
+                  alt={profileData.name}
+                  className="w-full h-full object-cover rounded-[14px]"
+                  onError={(e) => {
+                    e.currentTarget.src = heroImg;
+                  }}
                 />
               </div>
               <div>
